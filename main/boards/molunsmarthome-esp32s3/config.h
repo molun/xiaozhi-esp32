@@ -52,4 +52,8 @@
 #define DISPLAY_MIRROR_X true
 #define DISPLAY_MIRROR_Y true
 
+
+// A MCP Test: Control a lamp
+// #define LAMP_GPIO GPIO_NUM_18  // GPIO_NUM_46 雷达OUT;GPIO_NUM_17 雷达RX;GPIO_NUM_18 雷达TX;GPIO_NUM_14 WS2812B
+
 #endif // _BOARD_CONFIG_H_
