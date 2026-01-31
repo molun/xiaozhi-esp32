@@ -280,6 +280,11 @@ elseif(CONFIG_BOARD_TYPE_WAVESHARE_S3_TOUCH_LCD_4B)
     set(BUILTIN_TEXT_FONT font_puhui_basic_30_4)
     set(BUILTIN_ICON_FONT font_awesome_30_4)
     set(DEFAULT_EMOJI_COLLECTION twemoji_64)
+elseif(CONFIG_BOARD_TYPE_WAVESHARE_S3_TOUCH_LCD_4_3C)
+    set(BOARD_TYPE "waveshare-s3-touch-lcd-4.3c")
+    set(BUILTIN_TEXT_FONT font_puhui_basic_30_4)
+    set(BUILTIN_ICON_FONT font_awesome_30_4)
+    set(DEFAULT_EMOJI_COLLECTION twemoji_64)
 elseif(CONFIG_BOARD_TYPE_WAVESHARE_S3_TOUCH_AMOLED_1_75)
     set(BOARD_TYPE "waveshare-s3-touch-amoled-1.75")
     set(BUILTIN_TEXT_FONT font_puhui_basic_30_4)
@@ -785,7 +790,9 @@ endif()
 
 # Include EspVideo if target is ESP32S3 or ESP32P4
 if(CONFIG_IDF_TARGET_ESP32S3 OR CONFIG_IDF_TARGET_ESP32P4)
-    list(APPEND SOURCES "boards/common/esp_video.cc")
+    list(APPEND SOURCES "boards/common/esp_video.cc"
+                        "boards/common/rndis_board.cc"
+                        )
 endif()
 
 # Include Esp32Camera if target is ESP32S3
@@ -800,6 +807,7 @@ idf_component_register(SRCS ${SOURCES}
                     PRIV_REQUIRES
                         esp_pm
                         esp_psram
+                        esp_netif
                         esp_driver_gpio
                         esp_driver_uart
                         esp_driver_spi
