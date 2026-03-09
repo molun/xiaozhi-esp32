@@ -267,6 +267,12 @@ elseif(CONFIG_BOARD_TYPE_ESP_SENSAIRSHUTTLE)
     set(BUILTIN_TEXT_FONT font_puhui_basic_16_4)
     set(BUILTIN_ICON_FONT font_awesome_16_4)
     set(DEFAULT_EMOJI_COLLECTION twemoji_32)
+elseif(CONFIG_BOARD_TYPE_WAVESHARE_ESP32_TOUCH_LCD_3_5)
+    set(MANUFACTURER "waveshare")
+    set(BOARD_TYPE "esp32-touch-lcd-3.5")
+    set(BUILTIN_TEXT_FONT font_puhui_basic_20_4)
+    set(BUILTIN_ICON_FONT font_awesome_20_4)
+    set(DEFAULT_EMOJI_COLLECTION twemoji_64)
 elseif(CONFIG_BOARD_TYPE_WAVESHARE_ESP32_S3_AUDIO_BOARD)
     set(MANUFACTURER "waveshare")
     set(BOARD_TYPE "esp32-s3-audio-board")
@@ -596,6 +602,11 @@ elseif(CONFIG_BOARD_TYPE_XINGZHI_METAL_1_54_WIFI)
     set(BUILTIN_TEXT_FONT font_noto_basic_20_4)
     set(BUILTIN_ICON_FONT font_awesome_20_4)
     set(DEFAULT_EMOJI_COLLECTION noto-emoji_128)  
+elseif(CONFIG_BOARD_TYPE_XINGZHI_ABS_2_0)
+    set(BOARD_TYPE "xingzhi-abs-2.0")
+    set(BUILTIN_TEXT_FONT font_noto_basic_20_4)
+    set(BUILTIN_ICON_FONT font_awesome_20_4)
+    set(DEFAULT_EMOJI_COLLECTION noto-emoji_128)  
 elseif(CONFIG_BOARD_TYPE_SEEED_STUDIO_SENSECAP_WATCHER)
     set(BOARD_TYPE "sensecap-watcher")
     set(BUILTIN_TEXT_FONT font_noto_basic_30_4)
@@ -908,6 +919,7 @@ idf_component_register(SRCS ${SOURCES}
                         console
                         efuse
                         bt
+                        fatfs
                     )
 
 # Use target_compile_definitions to define BOARD_TYPE, BOARD_NAME
