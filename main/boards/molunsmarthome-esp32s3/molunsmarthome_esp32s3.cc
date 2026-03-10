@@ -10,7 +10,6 @@
 #include "led/single_led.h"
 #include "assets/lang_config.h"
 
-#include <wifi_station.h>
 #include <esp_log.h>
 #include <driver/i2c_master.h>
 #include <esp_lcd_panel_ops.h>
@@ -104,8 +103,9 @@ private:
     void InitializeButtons() {
         boot_button_.OnClick([this]() {
             auto& app = Application::GetInstance();
-            if (app.GetDeviceState() == kDeviceStateStarting && !WifiStation::GetInstance().IsConnected()) {
-                ResetWifiConfiguration();
+            if (app.GetDeviceState() == kDeviceStateStarting) {
+                EnterWifiConfigMode();
+                return;
             }
             app.ToggleChatState();
         });
@@ -152,11 +152,11 @@ private:
         static LampController lamp(LAMP_GPIO);
     }
 
-公共:
+public:
     MolunSmartHomeESP32S3() :
-        boot_button_(BOOT_BUTTON_GPIO)，
-        touch_button_(TOUCH_BUTTON_GPIO)，
-        volume_up_button_(VOLUME_UP_BUTTON_GPIO)，
+        boot_button_(BOOT_BUTTON_GPIO),
+        touch_button_(TOUCH_BUTTON_GPIO),
+        volume_up_button_(VOLUME_UP_BUTTON_GPIO),
         volume_down_button_(VOLUME_DOWN_BUTTON_GPIO) {
         InitializeDisplayI2c();
         InitializeSsd1306Display();
