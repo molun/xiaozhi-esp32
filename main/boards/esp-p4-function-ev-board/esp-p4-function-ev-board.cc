@@ -61,6 +61,9 @@ private:
 
     void InitializeLCD()
     {
+        ESP_LOGI(TAG, "Initializing LCD");
+        return;
+   
         bsp_display_config_t config = {
             .hdmi_resolution = BSP_HDMI_RES_NONE,
             .dsi_bus = {
